@@ -28,7 +28,6 @@ for (let pageNum = 1; pageNum < 5; pageNum++) {
   .catch((error) => { console.log(error) })
 }
 
-
 axios
   .get(INDEX_URL)
   .then((response) => {
@@ -82,9 +81,9 @@ function renderFriendsList(data) {
 // render paginator
 function renderPaginator(amount) {
   const numberOfPages = Math.ceil(amount/friendsperPage)
-  let rawHTML = ''
-  for (let page = 1; page <= numberOfPages; page++) {
-    rawHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${page}">${page}</a></li>`
+  let rawHTML = `<li class="page-item active" data-item><a class="page-link" href="#" data-page="1">1</a></li>`;
+  for (let page = 2; page <= numberOfPages; page++) {
+    rawHTML += `<li class="page-item" data-item><a class="page-link" href="#" data-page="${page}">${page}</a></li>`
   }
   paginator.innerHTML = rawHTML
 }
@@ -188,6 +187,14 @@ dataPanel.addEventListener('click', function onPanelClicked(event) {
 })
 
 paginator.addEventListener('click', function onPaginatorClicked(event) {
+  // 清除active
+  const pageItems = document.querySelectorAll("[data-item]");
+  pageItems.forEach((item) => {
+    item.classList = "page-item";
+  });
+  const item = event.target; // 在當下頁面加上active
+  item.parentElement.classList.add("active");
+
   if (event.target.tagName !== 'A') return
   const page = Number(event.target.dataset.page)
   renderFriendsList(getFriendsByPage(page))
