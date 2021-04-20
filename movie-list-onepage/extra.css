@@ -1,0 +1,58 @@
+a {
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.firstrow {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.switch-format {
+  margin-right: 5px;
+}
+
+.fa {
+  cursor: pointer;
+  padding: 2px;
+}
+
+.fa:hover {
+  color: #0000e3;
+}
+
+button:active,
+i:active {
+  transform: scale(0.96);
+  transition: transform 0.2s;
+}
+
+.fa.active {
+  background-color: #97cbff;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.fas {
+  color: yellow;
+}
+
+.list-group {
+  width: 100%;
+  margin-top: 10px;
+}
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+}
+.title-group > img {
+  width: 50px;
+  margin-right: 10px;
+}
