@@ -27,7 +27,7 @@ axios
     renderPaginator(movies.length);
   })
   .catch((err) => console.log(err));
-  
+
 // 函式
 function renderMovieCard(data) {
   let rawHTML = "";
@@ -155,10 +155,8 @@ function removeFromFavorite(id) {
   if (pageformat === 0) {
     if (displayformat === 0) {
       renderMovieCard(getMoviesByPage(page));
-      renderPaginator(movies.length);
     } else {
       renderMovieList(getMoviesByPage(page));
-      renderPaginator(movies.length);
     }
   } else {
     if (displayformat === 0) {
@@ -196,11 +194,11 @@ searchForm.addEventListener("submit", function onSearchFormSubmitted(event) {
   event.preventDefault();
   const keyword = searchInput.value.trim().toLowerCase();
   const key = searchInput.value;
-
+  page = 1
   filterMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(keyword)
   );
-  page = 1
+
   if (!keyword.length) {
     alert("Enter keyword!");
   } else if (filterMovies.length === 0) {
